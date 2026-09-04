@@ -22,22 +22,17 @@ document.querySelectorAll('.tabBtn').forEach((btn) => {
     const tab = btn.dataset.tab;
     document.getElementById('trendView').classList.toggle('hidden', tab !== 'trend');
     document.getElementById('detailView').classList.toggle('hidden', tab !== 'detail');
+
+    // 숨겨진 상태(display:none)에서 생성된 차트는 크기가 0으로 굳어버리므로
+    // 탭이 실제로 보이게 될 때 다시 리사이즈해준다.
+    if (tab === 'trend') subtopicTrendChart?.resize();
+    if (tab === 'detail') barChart?.resize();
   });
 });
 
 function renderTotalTrend() {
   if (totalTrendChart) { totalTrendChart.destroy(); totalTrendChart = null; }
-  const box = document.getElementById('totalTrendChart').closest('.chart-box');
-  const series = totalSeries();
-  box.querySelector('.chart-empty')?.remove();
-  if (series.length === 0) {
-    const empty = document.createElement('p');
-    empty.className = 'placeholder chart-empty';
-    empty.textContent = '아직 기록된 회차가 없습니다. 회차를 입력하면 여기에 추이가 표시됩니다.';
-    box.appendChild(empty);
-    return;
-  }
-  totalTrendChart = renderTotalTrendChart(document.getElementById('totalTrendChart'), series);
+  totalTrendChart = renderTotalTrendChart(document.getElementById('totalTrendChart'), totalSeries());
 }
 
 function renderSubtopicFilter() {
@@ -65,15 +60,6 @@ function renderSubtopicFilter() {
 
 function renderSubtopicTrend() {
   if (subtopicTrendChart) { subtopicTrendChart.destroy(); subtopicTrendChart = null; }
-  const box = document.getElementById('subtopicTrendChart').closest('.chart-box');
-  box.querySelector('.chart-empty')?.remove();
-  if (getRounds().length === 0) {
-    const empty = document.createElement('p');
-    empty.className = 'placeholder chart-empty';
-    empty.textContent = '아직 기록된 회차가 없습니다.';
-    box.appendChild(empty);
-    return;
-  }
   const series = subtopicSeries();
   subtopicTrendChart = renderSubtopicTrendChart(document.getElementById('subtopicTrendChart'), series, activeSubtopics);
 }
@@ -125,13 +111,13 @@ function renderDetail() {
 
   if (barChart) { barChart.destroy(); barChart = null; }
 
-  if (!round) {
-    area.innerHTML = '<p class="placeholder">회차를 선택하면 그래프가 표시됩니다.</p>';
-    return;
-  }
+  // 선택된 회차가 없어도(=기록이 아예 없어도) 0%짜리 기본틀 그래프를 그대로 보여준다.
+  const breakdown = round
+    ? subtopicBreakdown(round)
+    : SUBTOPICS.map((subtopic) => ({ subtopic, score: 0, max: 0, pct: 0 }));
 
-  area.innerHTML = `<div class="chart-box"><canvas id="barChart"></canvas></div>`;
-  barChart = renderSubtopicBarChart(document.getElementById('barChart'), subtopicBreakdown(round));
+  area.innerHTML = `<div class="chart-box trend-box"><canvas id="barChart"></canvas></div>`;
+  barChart = renderSubtopicBarChart(document.getElementById('barChart'), breakdown);
 }
 
 renderTotalTrend();

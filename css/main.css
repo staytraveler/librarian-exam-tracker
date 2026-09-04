@@ -209,6 +209,14 @@ ul li {
   max-height: 150px;
 }
 
+.trend-box {
+  height: 240px;
+}
+
+.trend-box canvas {
+  max-height: 240px;
+}
+
 /* ============================================================
    문제 카드 (도서 색인카드 느낌)
    ============================================================ */
@@ -391,8 +399,11 @@ ul li {
   .panel {
     padding: 18px;
   }
-  .charts {
-    grid-template-columns: 1fr;
+  .trend-box {
+    height: 200px;
+  }
+  .trend-box canvas {
+    max-height: 200px;
   }
 }
 

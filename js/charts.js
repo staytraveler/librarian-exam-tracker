@@ -14,6 +14,7 @@ export function renderSubtopicBarChart(canvas, breakdown) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: { legend: { display: false }, title: { display: true, text: '세부과목별 정답률', font: { size: 13 } } },
       scales: { y: { beginAtZero: true, max: 100, ticks: { callback: (v) => v + '%' } } },
     },
@@ -72,6 +73,7 @@ export function renderSubtopicTrendChart(canvas, seriesBySubtopic, activeSubtopi
     data: { labels, datasets },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
         title: { display: true, text: '세부과목별 정답률 추이', font: { size: 13 } },

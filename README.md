@@ -1,4 +1,5 @@
-> 🚧 현재 개발 중입니다.<br>
+> <del>🚧 현재 개발 중입니다.</del><br>
+> 🚧 1차 초안 업로드 및 배포 완료 26.09.05<br>
 > 학습 목적으로 시작한 개인 프로젝트이며, 실제 사용자의 피드백을 받아가며 개선하고 있습니다.<br>
 > AI에게 구체적인 설계 지시를 주고 초안을 생성한 뒤 직접 검토·리팩토링하는 방식으로 진행합니다.
 
@@ -8,7 +9,7 @@
 
 ## 배포 주소
 
-(배포 후 이곳에 URL 추가 예정)
+[https://librarian-exam-tracker.vercel.app/](https://librarian-exam-tracker.vercel.app/)
 
 ## 배경
 
@@ -38,7 +39,7 @@
 
 ```
 librarian-exam-tracker/
-├── index.html              # 홈 화면
+├── index.html              # 홈 화면 / 수동 백업
 ├── pages/
 │   ├── record.html         # 문제별 세부과목/점수 입력
 │   └── history.html        # 회차 목록 및 세부과목별 그래프 조회
@@ -46,16 +47,19 @@ librarian-exam-tracker/
 │   ├── header.css
 │   ├── main.css
 │   └── footer.css
-├── js/
-│   ├── components/
-│   │   ├── app-header.js   # <app-header> 컴포넌트
-│   │   └── app-footer.js   # <app-footer> 컴포넌트
-│   ├── storage.js          # localStorage 읽기/쓰기
-│   ├── rounds.js           # 회차/문항 저장 및 세부과목별 집계
-│   ├── charts.js           # Chart.js 렌더링
-│   ├── record-page.js      # record.html 진입점
-│   └── history-page.js     # history.html 진입점
-└── assets/
+└── js/
+    ├── components/
+    │   ├── app-header.js   # <app-header> 컴포넌트
+    │   └── app-footer.js   # <app-footer> 컴포넌트
+    ├── storage.js          # localStorage 읽기/쓰기
+    ├── rounds.js           # 회차/문항 저장 및 세부과목별 집계
+    ├── charts.js           # Chart.js 렌더링
+    ├── record-page.js      # record.html 진입점
+    ├── history-page.js     # history.html 진입점
+    ├── home-page.js
+    ├── modal.js
+    └── config.js
+
 ```
 
 ## 로컬 개발 시 주의사항
@@ -75,6 +79,8 @@ librarian-exam-tracker/
 | 항목 | 날짜 |
 |---|---|
 | 개발 시작일 | 2026-09-05 |
+| 배포 시작일 | 2026-09-05 |
+| 업데이트 | - |
 | 종료일 | - |
 
 ## 문의
