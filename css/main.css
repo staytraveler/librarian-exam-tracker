@@ -1,0 +1,444 @@
+/* ============================================================
+   변수
+   ============================================================ */
+:root {
+  --bg: #F6F4EE;
+  --surface: #FFFFFF;
+  --ink: #24292E;
+  --muted: #74777F;
+  --line: #E4E0D5;
+  --correct: #2F6F5E;
+  --correct-soft: #E4EFEC;
+  --wrong: #B0483E;
+  --wrong-soft: #F5E7E5;
+  --serif: Georgia, "Nanum Myeongjo", "Batang", serif;
+  --shadow: 0 1px 3px rgba(36, 41, 46, 0.06);
+}
+
+/* ============================================================
+   리셋 / 베이스
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   레이아웃 / 패널
+   ============================================================ */
+main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+  color: var(--ink);
+}
+
+/* ============================================================
+   폼 요소
+   ============================================================ */
+label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--ink);
+  margin-bottom: 12px;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--correct);
+  box-shadow: 0 0 0 3px var(--correct-soft);
+}
+
+/* ---------- 버튼 시스템 ---------- */
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.05s ease;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible,
+.chip:focus-visible,
+.tabBtn:focus-visible {
+  outline: 2px solid var(--correct);
+  outline-offset: 2px;
+}
+
+/* 기본값 = primary */
+button,
+button.primary {
+  background: var(--correct);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+
+
+button.secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+button.secondary:hover {
+  border-color: var(--correct);
+  color: var(--correct);
+}
+
+button.danger {
+  background: transparent;
+  color: var(--wrong);
+  border: 1px solid var(--wrong);
+}
+
+button.danger:hover {
+  background: var(--wrong);
+  color: #fff;
+}
+
+/* ============================================================
+   리스트 / 안내 문구
+   ============================================================ */
+ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.empty,
+.placeholder {
+  color: var(--muted);
+  font-size: 13px;
+  padding: 14px 0;
+  text-align: center;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.hint:last-child {
+  margin-bottom: 0;
+}
+
+.field-block {
+  margin-top: 24px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   차트
+   ============================================================ */
+.chart-box {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 16px;
+  min-width: 0;
+  background: var(--surface);
+}
+
+.total-trend-box {
+  height: 150px;
+}
+
+.total-trend-box canvas {
+  max-height: 150px;
+}
+
+/* ============================================================
+   문제 카드 (도서 색인카드 느낌)
+   ============================================================ */
+.qrow {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--correct);
+  border-radius: 3px 8px 8px 3px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  transition: border-left-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.qrow:focus-within {
+  border-left-color: var(--wrong);
+  box-shadow: 0 2px 8px rgba(36, 41, 46, 0.1);
+}
+
+.qrow-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.qno-badge {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--correct);
+  background: var(--correct-soft);
+  border-radius: 4px;
+  padding: 3px 9px;
+  letter-spacing: 0.02em;
+}
+
+.qmax-label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.qfield {
+  margin-bottom: 12px;
+}
+
+.qfield:last-child {
+  margin-bottom: 0;
+}
+
+.qlabel {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.chip:hover {
+  border-color: var(--correct);
+  color: var(--correct);
+}
+
+.chip.selected {
+  background: var(--correct);
+  border-color: var(--correct);
+  color: #fff;
+  font-weight: 600;
+}
+
+.scoreChip {
+  min-width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+/* 점수 칩 선택 시 만점/부분점수/0점을 색으로 구분 */
+.scoreChip.selected.zero {
+  background: var(--wrong);
+  border-color: var(--wrong);
+}
+
+.scoreChip.selected.partial {
+  background: #C98A2C;
+  border-color: #C98A2C;
+}
+
+/* ============================================================
+   탭 / 필터 (기록 보기 화면)
+   ============================================================ */
+.tabBar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  padding: 9px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.12s ease;
+}
+
+.tabBtn:hover {
+  color: var(--ink);
+}
+
+.tabBtn.active {
+  color: var(--ink);
+  border-bottom-color: var(--correct);
+}
+
+.filterChip {
+  border-color: var(--chip-color, var(--line));
+  color: var(--chip-color, var(--muted));
+  background: var(--surface);
+}
+
+.filterChip.selected {
+  background: var(--chip-color, var(--correct));
+  border-color: var(--chip-color, var(--correct));
+  color: #fff;
+}
+
+.detail-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.detail-controls select {
+  flex: 1;
+  min-width: 160px;
+  margin-bottom: 0;
+}
+
+.detail-controls button {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   반응형
+   ============================================================ */
+@media (max-width: 760px) {
+  main {
+    padding: 20px 16px;
+  }
+  .panel {
+    padding: 18px;
+  }
+  .charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 커스텀 알림/확인 모달 ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(36, 41, 46, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+}
+
+.modal-box {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(36, 41, 46, 0.18);
+  transform: translateY(6px);
+  transition: transform 0.15s ease;
+}
+
+.modal-overlay.open .modal-box {
+  transform: translateY(0);
+}
+
+.modal-message {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: var(--ink);
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

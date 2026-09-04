@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기록 보기 | librarian-exam-tracker</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9A%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <app-header></app-header>
+
+  <main>
+    <section class="panel">
+      <h2>총점 추이</h2>
+      <div class="chart-box total-trend-box">
+        <canvas id="totalTrendChart"></canvas>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="tabBar" role="tablist">
+        <button type="button" class="tabBtn active" data-tab="trend" role="tab" aria-selected="true">전체 추이</button>
+        <button type="button" class="tabBtn" data-tab="detail" role="tab" aria-selected="false">회차별 상세</button>
+      </div>
+
+      <div id="trendView">
+        <div class="chipGroup" id="subtopicFilter"></div>
+        <div class="chart-box"><canvas id="subtopicTrendChart"></canvas></div>
+      </div>
+
+      <div id="detailView" class="hidden">
+        <div class="detail-controls">
+          <select id="roundSelect"></select>
+          <button id="deleteRoundBtn" type="button" class="danger">이 회차 삭제</button>
+        </div>
+        <div id="detailArea"></div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+
+  <script type="module" src="/js/components/app-header.js"></script>
+  <script type="module" src="/js/components/app-footer.js"></script>
+  <script type="module" src="/js/history-page.js"></script>
+</body>
+</html>

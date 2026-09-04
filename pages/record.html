@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회차 입력 | librarian-exam-tracker</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9A%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+
+  <app-header></app-header>
+
+  <main>
+    <section class="panel">
+      <h2>회차 정보</h2>
+      <label for="roundLabel">회차명</label>
+      <input type="text" id="roundLabel" placeholder="예: 1회차 모의고사">
+      <label for="roundDate">날짜</label>
+      <input type="date" id="roundDate">
+    </section>
+
+    <section class="panel">
+      <h2>전공A (40점)</h2>
+      <div id="questionsA"></div>
+    </section>
+
+    <section class="panel">
+      <h2>전공B (40점)</h2>
+      <div id="questionsB"></div>
+    </section>
+
+    <button id="saveRoundBtn" type="button" class="primary">회차 저장</button>
+  </main>
+
+  <app-footer></app-footer>
+
+  <script type="module" src="/js/components/app-header.js"></script>
+  <script type="module" src="/js/components/app-footer.js"></script>
+  <script type="module" src="/js/record-page.js"></script>
+</body>
+</html>
