@@ -79,6 +79,18 @@ function validateAnswers(answers) {
 renderQuestionRows('questionsA', 'A');
 renderQuestionRows('questionsB', 'B');
 
+//현재 날짜 기본표시
+const roundDate = document.getElementById('roundDate');
+const today = new Date();
+
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작이라 +1
+const dd = String(today.getDate()).padStart(2, '0');
+
+roundDate.value = `${yyyy}-${mm}-${dd}`;
+//
+
+
 document.getElementById('saveRoundBtn').addEventListener('click', async () => {
   const label = document.getElementById('roundLabel').value.trim() || '회차';
   const date = document.getElementById('roundDate').value || '';

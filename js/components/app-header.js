@@ -16,6 +16,7 @@ class AppHeader extends HTMLElement {
     const currentPath = window.location.pathname;
     this.querySelectorAll('.site-nav a').forEach((link) => {
       const linkPath = new URL(link.getAttribute('href'), window.location.origin).pathname;
+
       if (linkPath === currentPath || (currentPath === '/' && linkPath === '/index.html')) {
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
